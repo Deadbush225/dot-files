@@ -19,7 +19,7 @@
         {
           "foreground": "#101010",
           "style": "plain",
-          "template": "\ue0b6",
+          "template": "\n\ue0b6",
           "type": "text"
         },
         {
@@ -39,13 +39,13 @@
           "foreground": "#d650ff",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "branch_icon": "",
+            "branch_icon": "\uE725 ",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
           "style": "powerline",
-          "template": " {{ .RepoName}} \uE725 {{ .HEAD }} {{ .BranchStatus }} {{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}}\uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
+          "template": " \uf1d3 {{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}}\uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} ",
           "type": "git"
         },
         {
@@ -53,6 +53,7 @@
           "foreground": "#0dda85",
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#ece63d{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#c57f33{{ end }}",
             "{{ if gt .Ahead 0 }}#92da0d{{ end }}",
             "{{ if gt .Behind 0 }}#c53379{{ end }}"
           ],
@@ -62,7 +63,7 @@
             "branch_max_length": 25
           },
           "style": "powerline",
-          "template": "\uF105 <,transparent>\ue0b0</>",
+          "template": "<,#101010>\uF105 </><,transparent>\ue0b0</>",
           "type": "git"
         }
       ],
@@ -74,7 +75,32 @@
       "segments": [
         {
           "style": "plain",
-          "template": " ",
+          "template": "    ",
+          "type": "text"
+        },
+        {
+          "background": "#101010",
+          "foreground": "#6f47ff",
+          "invert_powerline": true,
+          "leading_diamond": "<transparent,#101010>\ue0b0</>",
+          "properties": {
+            "time_format": "Jan _2 | 15:04:05"
+          },
+          "style": "diamond",
+          "template": " \uf5ef {{ .CurrentDate | date .Format }} \uf0ac",
+          "trailing_diamond": "\ue0b4",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "style": "plain",
+          "template": "    <transparent,#101010>\ue0b0</>",
           "type": "text"
         },
         {
