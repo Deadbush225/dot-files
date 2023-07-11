@@ -54,7 +54,7 @@
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#ece63d{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#c57f33{{ end }}",
-            "{{ if gt .Ahead 0 }}#92da0d{{ end }}",
+            "{{ if gt .Ahead 0 }}#0dda85{{ end }}",
             "{{ if gt .Behind 0 }}#c53379{{ end }}"
           ],
           "properties": {
